@@ -45,5 +45,11 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+
+ <!-- image picker -->
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Photos from gallary required</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Photos from Camera is required</string>
 </dict>
 </plist>

@@ -1,17 +1,23 @@
 import 'dart:io';
 
+import 'package:blog_app/core/common/cubits/app_user/app_user_cubit.dart';
+import 'package:blog_app/core/common/widgets/loader.dart';
+import 'package:blog_app/core/constants/constants.dart';
+import 'package:blog_app/core/theme/app_pallete.dart';
+import 'package:blog_app/core/utils/pick_image.dart';
+import 'package:blog_app/core/utils/show_snackbar.dart';
+import 'package:blog_app/features/blog/presentation/bloc/blog_bloc.dart';
+import 'package:blog_app/features/blog/presentation/pages/blog_page.dart';
+import 'package:blog_app/features/blog/presentation/widgets/blog_editor.dart';
 import 'package:dotted_border/dotted_border.dart';
-import 'package:fca_blog_app/core/common/constants/constants.dart';
-import 'package:fca_blog_app/core/common/widgets/loader.dart';
-import 'package:fca_blog_app/core/cubits/cubit/app_user_cubit.dart';
-import 'package:fca_blog_app/core/theme/app_pallete.dart';
-import 'package:fca_blog_app/core/utils/show_snackbar.dart';
-import 'package:fca_blog_app/features/blog/presentation/bloc/blog_bloc.dart';
-import 'package:fca_blog_app/features/blog/presentation/widgets/blog_editor.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AddNewBlogPage extends StatefulWidget {
+  static route() => MaterialPageRoute(
+        builder: (context) => const AddNewBlogPage(),
+      );
   const AddNewBlogPage({super.key});
 
   @override
@@ -75,7 +81,7 @@ class _AddNewBlogPageState extends State<AddNewBlogPage> {
       body: BlocConsumer<BlogBloc, BlogState>(
         listener: (context, state) {
           if (state is BlogFailure) {
-            showSnackbar(context, state.error);
+            showSnackBar(context, state.error);
           } else if (state is BlogUploadSuccess) {
             Navigator.pushAndRemoveUntil(
               context,
@@ -86,7 +92,7 @@ class _AddNewBlogPageState extends State<AddNewBlogPage> {
         },
         builder: (context, state) {
           if (state is BlogLoading) {
-            return const Loder();
+            return const Loader();
           }
 
           return SingleChildScrollView(
@@ -121,10 +127,10 @@ class _AddNewBlogPageState extends State<AddNewBlogPage> {
                               radius: const Radius.circular(10),
                               borderType: BorderType.RRect,
                               strokeCap: StrokeCap.round,
-                              child: const SizedBox(
+                              child: Container(
                                 height: 150,
                                 width: double.infinity,
-                                child: Column(
+                                child: const Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Icon(
