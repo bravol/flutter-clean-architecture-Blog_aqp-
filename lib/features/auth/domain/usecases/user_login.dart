@@ -2,7 +2,7 @@
 import 'package:fca_blog_app/core/error/failure.dart';
 import 'package:fca_blog_app/core/usecase/usecase.dart';
 import 'package:fca_blog_app/features/auth/domain/repository/auth_repository.dart';
-import 'package:fca_blog_app/features/auth/entities/user.dart';
+import 'package:fca_blog_app/core/common/entities/user.dart';
 import 'package:fpdart/fpdart.dart';
 
 class UserLogin implements UseCase<User, UserLoginParams> {
