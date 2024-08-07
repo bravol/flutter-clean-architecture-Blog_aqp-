@@ -16,6 +16,8 @@ class AuthField extends StatelessWidget {
     return TextFormField(
       controller: controller,
       decoration: InputDecoration(
+        contentPadding:
+            const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
         hintText: hintText,
       ),
       validator: (value) {
